@@ -194,7 +194,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('assets/images/users/profile-pic.jpg')}}" alt="user" class="rounded-circle"
+                                <img src="../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                                         class="text-dark">{{ auth()->user()->name }}</span> <i data-feather="chevron-down"
@@ -207,12 +207,12 @@
                                     Parametres</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" href="{{ route('logout') }}"><i data-feather="power"
-                                    class="svg-icon mr-2 ml-1"></i>
-                                Deconnexion</a>
-                                  
-                                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Deconnexion</a>
+                                      
+                                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
                                 
                             </div>
                         </li>
@@ -241,7 +241,7 @@
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Gestion</span></li>
 
-                        <li class="sidebar-item selected"> <a class="sidebar-link sidebar-link active" href="/actualites"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/actualites"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
                                     class="hide-menu">Actualites
                                 </span></a>
@@ -252,7 +252,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/inscriptions"
                                 aria-expanded="false"><i class="icon-basket"></i><span
                                     class="hide-menu">Inscriptions</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/evenements"
+                        <li class="sidebar-item"> <a class="sidebar-link " href="/evenements"
                                         aria-expanded="false"><i class="icon-calender"></i><span
                                             class="hide-menu">Evenements</span></a></li>
 
@@ -316,31 +316,54 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-4">
-                                    <h4 class="card-title">Actualites > <span class="text-primary">{{ $actualite->titre }} </span> > Modifier </h4>
-                                    
+                                    <h4 class="card-title">Evenements</h4>
+                                    <div class="ml-auto">
+                                        <a href="/evenement/add" class="btn btn-primary">Ajouter</a>
+                                    </div>
                                 </div>
                                 <hr />
                                 <div class="table-responsive">
-                                   <form action="/actualite/update" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                   <input type="hidden" name="idactualite"  value="{{$actualite->id }}">
-                                            <div class="form-group">
-                                                <label for="">Titre</label>
-                                                <input type="text" name="titre" value="{{ $actualite->titre }}" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">Description</label>
-                                                <textarea type="text" name="description"  class="form-control">{{ $actualite->description }}</textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">Affiche</label>
-                                                <input type="file" name="affiche"  class="form-control">
-                                            </div>
-                                            <div class="form-group">
+                                    <table class="table no-wrap v-middle mb-0">
+                                        <thead>
+                                            <tr class="border-0">
+                                                <th class="border-0 font-14 font-weight-medium text-muted">Titre
+                                                </th>
+                                                <th class="border-0 font-14 font-weight-medium text-muted px-2">Description
+                                                </th>
+                                                <th class="border-0 font-14 font-weight-medium text-muted">Lieu </th>
+                                                <th class="border-0 font-14 font-weight-medium text-muted">Date / Heure </th>
+                                                <th class="border-0 font-14 font-weight-medium text-muted">Actions</th>
                                                 
-                                                <input type="submit" value="Modifier"  class="btn btn-primary">
-                                            </div>
-                                   </form>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($evenements as $e)
+                                                
+                                            
+                                            <tr>
+                                                <td class="border-top-0 px-2 py-4">
+                                                   {{ Str::limit($e->titre,15,' ...') }}
+                                                </td>
+                                                <td class="border-top-0 text-muted px-2 py-4 font-14">{{ Str::limit($e->description,50,' ...') }}</td>
+                                                <td class="border-top-0 px-2 py-4">
+                                                    {{ $e->lieu }}
+                                                </td>
+                                                <td class="border-top-0 px-2 py-4">
+                                                    {{ $e->date }} / {{ $e->heure }}
+                                                </td>
+                                                
+                                                <td class="border-top-0 px-2 py-4">
+                                                        <a href="/evenement/edit/{{ $e->id }}" class="btn btn-success">Modifier</a>
+                                                        <a onclick="return confirm('Voulez-vous vraiment supprimer cette evenement ?')" href="/evenement/delete/{{ $e->id }}" class="btn btn-danger">Supprimer</a>
+                                                </td>
+                                            
+                                                
+                                            </tr>
+                                         
+                                            @endforeach
+                                          
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

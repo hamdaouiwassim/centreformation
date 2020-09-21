@@ -241,7 +241,7 @@
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Gestion</span></li>
 
-                        <li class="sidebar-item selected"> <a class="sidebar-link sidebar-link active" href="/actualites"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/actualites"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
                                     class="hide-menu">Actualites
                                 </span></a>
@@ -252,7 +252,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/inscriptions"
                                 aria-expanded="false"><i class="icon-basket"></i><span
                                     class="hide-menu">Inscriptions</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/evenements"
+                        <li class="sidebar-item selected"> <a class="sidebar-link sidebar-link active" href="/evenements"
                                         aria-expanded="false"><i class="icon-calender"></i><span
                                             class="hide-menu">Evenements</span></a></li>
 
@@ -316,26 +316,42 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-4">
-                                    <h4 class="card-title">Actualites > <span class="text-primary">{{ $actualite->titre }} </span> > Modifier </h4>
+                                    <h4 class="card-title">Evenements   > Modifier </h4>
                                     
                                 </div>
                                 <hr />
                                 <div class="table-responsive">
-                                   <form action="/actualite/update" method="post" enctype="multipart/form-data">
+                                   <form action="/evenement/update" method="post" enctype="multipart/form-data">
                                     @csrf
-                                   <input type="hidden" name="idactualite"  value="{{$actualite->id }}">
+                                   <input type="hidden" name="idevenement" value={{ $evenement->id }} >
                                             <div class="form-group">
                                                 <label for="">Titre</label>
-                                                <input type="text" name="titre" value="{{ $actualite->titre }}" class="form-control">
+                                                <input type="text" name="titre"  class="form-control" value={{ $evenement->titre }}>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Description</label>
-                                                <textarea type="text" name="description"  class="form-control">{{ $actualite->description }}</textarea>
+                                                <textarea type="text" name="description"  class="form-control">{{ $evenement->description }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Affiche</label>
-                                                <input type="file" name="affiche"  class="form-control">
+                                                <input type="file" name="affiche"    class="form-control">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="">Lieu</label>
+                                                <input type="text" name="lieu"  value={{ $evenement->lieu }} class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Date</label>
+                                                <input type="date" name="date" value={{ $evenement->date }}  class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Heure</label>
+                                                <input type="time" name="heure" value={{ $evenement->heure }} class="form-control">
+                                            </div>
+
+
                                             <div class="form-group">
                                                 
                                                 <input type="submit" value="Modifier"  class="btn btn-primary">

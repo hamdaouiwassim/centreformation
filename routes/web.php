@@ -28,3 +28,11 @@ Route::post('/actualite/store', 'ActualiteController@store');
 Route::get('/actualite/add', 'ActualiteController@create');
 
 
+Route::get('/evenements', 'EvenementController@index')->name('evenements');
+Route::get('/evenement/delete/{id}', 'EvenementController@destroy');
+Route::get('/evenement/edit/{id}', 'EvenementController@edit');
+Route::post('/evenement/update', 'EvenementController@update');
+Route::post('/evenement/store', 'EvenementController@store');
+Route::get('/evenement/add', 'EvenementController@create');
+
+

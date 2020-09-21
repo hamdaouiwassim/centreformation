@@ -47,7 +47,7 @@ class ActualiteController extends Controller
 
         $file = $request->file('affiche');
 
-        if($file){
+        if( $request->affiche != " "){
             $filename = uniqid().".".$file->getClientOriginalExtension();
             //Move Uploaded File
             $destinationPath = 'uploads/actualites';
@@ -100,7 +100,7 @@ class ActualiteController extends Controller
 
         $file = $request->file('affiche');
 
-        if( $file != " " ){
+        if( $request->affiche != "" ){
             $filename = uniqid().".".$file->getClientOriginalExtension();
             //Move Uploaded File
             $destinationPath = 'uploads/actualites';

@@ -206,9 +206,13 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     Parametres</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" href="{{ route('logout') }}"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Deconnexion</a>
+                                      
+                                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
                                 
                             </div>
                         </li>
