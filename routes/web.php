@@ -36,3 +36,11 @@ Route::post('/evenement/store', 'EvenementController@store');
 Route::get('/evenement/add', 'EvenementController@create');
 
 
+
+Route::get('/formations', 'FormationController@index')->name('formations');
+Route::get('/formation/delete/{id}', 'FormationController@destroy');
+Route::get('/formation/edit/{id}', 'FormationController@edit');
+Route::post('/formation/update', 'FormationController@update');
+Route::post('/formation/store', 'FormationController@store');
+Route::get('/formation/add', 'FormationController@create');
+

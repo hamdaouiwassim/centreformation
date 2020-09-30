@@ -15,6 +15,8 @@ class FormationController extends Controller
     public function index()
     {
         //
+        $formations = Formation::all();
+        return view('admin.formations.index')->with('formations',$formations);
     }
 
     /**
@@ -25,6 +27,8 @@ class FormationController extends Controller
     public function create()
     {
         //
+        return view('admin.formations.add');
+  
     }
 
     /**
@@ -36,6 +40,25 @@ class FormationController extends Controller
     public function store(Request $request)
     {
         //
+        $formation = new Formation();
+        $formation->titre = $request->titre;
+        $formation->description = $request->description;
+        $formation->etat = "Phase d'inscription";
+        $file = $request->file('affiche');
+  
+        if( $request->affiche != ""){
+            $filename = uniqid().".".$file->getClientOriginalExtension();
+            //Move Uploaded File
+            $destinationPath = 'uploads/formations';
+            $file->move($destinationPath,$filename);
+            $formation->affiche  = $filename;
+        }
+        $formation->date_debut = $request->date_debut;
+        $formation->date_fin = $request->date_fin;
+        $formation->duree = $request->duree;
+        $formation->save();
+
+        return redirect('/formations');
     }
 
     /**
@@ -55,9 +78,11 @@ class FormationController extends Controller
      * @param  \App\Formation  $formation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Formation $formation)
+    public function edit($idformation)
     {
         //
+        return view('admin.formations.edit')->with('formation',Formation::find($idformation));
+ 
     }
 
     /**
@@ -67,9 +92,32 @@ class FormationController extends Controller
      * @param  \App\Formation  $formation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Formation $formation)
+    public function update(Request $request)
     {
         //
+                //
+                $formation = Formation::find($request->idformation);
+                $formation->titre = $request->titre;
+                $formation->description = $request->description;
+                if (  $request->etat != "" ){
+                    $formation->etat = $request->etat;
+                }
+               
+                $file = $request->file('affiche');
+          
+                if( $request->affiche != ""){
+                    $filename = uniqid().".".$file->getClientOriginalExtension();
+                    //Move Uploaded File
+                    $destinationPath = 'uploads/formations';
+                    $file->move($destinationPath,$filename);
+                    $formation->affiche  = $filename;
+                }
+                $formation->date_debut = $request->date_debut;
+                $formation->date_fin = $request->date_fin;
+                $formation->duree = $request->duree;
+                $formation->update();
+        
+                return redirect('/formations');
     }
 
     /**
@@ -78,8 +126,10 @@ class FormationController extends Controller
      * @param  \App\Formation  $formation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Formation $formation)
+    public function destroy($idformation)
     {
         //
+        Formation::find($idformation)->delete() ;
+        return redirect()->back();
     }
 }

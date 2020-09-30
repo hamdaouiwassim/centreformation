@@ -48,7 +48,7 @@ class EvenementController extends Controller
           $evenement->heure =  $request->heure;
           $file = $request->file('affiche');
   
-          if( $request->affiche != " "){
+          if( $request->affiche != ""){
               $filename = uniqid().".".$file->getClientOriginalExtension();
               //Move Uploaded File
               $destinationPath = 'uploads/evenements';
