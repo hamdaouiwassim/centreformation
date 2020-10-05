@@ -57,7 +57,7 @@ class ActualiteController extends Controller
        
      
         $actualite->save();
-        return redirect('/actualites');
+        return redirect('/admin/actualites');
     }
 
     /**
@@ -110,7 +110,7 @@ class ActualiteController extends Controller
        
      
         $actualite->update();
-        return redirect('/actualites');
+        return redirect('/admin/actualites');
 
     }
 

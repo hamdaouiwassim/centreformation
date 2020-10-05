@@ -12,4 +12,9 @@ How To install
 
 - php artisan migrate
 
+<<<<<<< HEAD
 - php artisan serve
+=======
+- php artisan serve
+
+>>>>>>> d9a0775c19b9ed0cc9e4ecc13508ba2d59cb43de

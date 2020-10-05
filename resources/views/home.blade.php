@@ -241,18 +241,18 @@
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Gestion</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="/actualites"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/admin/actualites"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
                                     class="hide-menu">Actualites
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/formations"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/formations"
                                 aria-expanded="false"><i class="icon-layers"></i><span
                                     class="hide-menu">Formations</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/inscriptions"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/inscriptions"
                                 aria-expanded="false"><i class="icon-basket"></i><span
                                     class="hide-menu">Inscriptions</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/evenements"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/evenements"
                                         aria-expanded="false"><i class="icon-calender"></i><span
                                             class="hide-menu">Evenements</span></a></li>
 

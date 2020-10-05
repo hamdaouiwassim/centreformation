@@ -19,28 +19,39 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Admin Routes
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/actualites', 'ActualiteController@index')->name('actualites');
-Route::get('/actualite/delete/{id}', 'ActualiteController@destroy');
-Route::get('/actualite/edit/{id}', 'ActualiteController@edit');
-Route::post('/actualite/update', 'ActualiteController@update');
-Route::post('/actualite/store', 'ActualiteController@store');
-Route::get('/actualite/add', 'ActualiteController@create');
+Route::get('/admin/actualites', 'ActualiteController@index')->name('actualites');
+Route::get('/admin/actualite/delete/{id}', 'ActualiteController@destroy')->name('deleteActualite');
+Route::get('/admin/actualite/edit/{id}', 'ActualiteController@edit')->name('editActualite');
+Route::post('/admin/actualite/update', 'ActualiteController@update')->name('updateActualite');
+Route::post('/admin/actualite/store', 'ActualiteController@store')->name('addActualite');
+Route::get('/admin/actualite/add', 'ActualiteController@create')->name('createActualite');
 
 
-Route::get('/evenements', 'EvenementController@index')->name('evenements');
-Route::get('/evenement/delete/{id}', 'EvenementController@destroy');
-Route::get('/evenement/edit/{id}', 'EvenementController@edit');
-Route::post('/evenement/update', 'EvenementController@update');
-Route::post('/evenement/store', 'EvenementController@store');
-Route::get('/evenement/add', 'EvenementController@create');
+Route::get('/admin/evenements', 'EvenementController@index')->name('evenements');
+Route::get('/admin/evenement/delete/{id}', 'EvenementController@destroy')->name('deleteEvent');
+Route::get('/admin/evenement/edit/{id}', 'EvenementController@edit')->name('editEvent');
+Route::post('/admin/evenement/update', 'EvenementController@update')->name('updateEvent');
+Route::post('/admin/evenement/store', 'EvenementController@store')->name('addEvent');
+Route::get('/admin/evenement/add', 'EvenementController@create')->name('createEvent');
 
 
 
-Route::get('/formations', 'FormationController@index')->name('formations');
-Route::get('/formation/delete/{id}', 'FormationController@destroy');
-Route::get('/formation/edit/{id}', 'FormationController@edit');
-Route::post('/formation/update', 'FormationController@update');
-Route::post('/formation/store', 'FormationController@store');
-Route::get('/formation/add', 'FormationController@create');
+Route::get('/admin/formations', 'FormationController@index')->name('formations');
+Route::get('/admin/formation/delete/{id}', 'FormationController@destroy')->name('deleteFormation');
+Route::get('/admin/formation/edit/{id}', 'FormationController@edit')->name('editFormation');
+Route::post('/admin/formation/update', 'FormationController@update')->name('updateFormation');
+Route::post('/admin/formation/store', 'FormationController@store')->name('addFormation');
+Route::get('/admin/formation/add', 'FormationController@create')->name('createFormation');
+
+// User Routes
+
+Route::get('/formations', 'FormationController@list');
+Route::get('/formation/{id}', 'FormationController@show');
+
+
+//Route::get('/formations', 'InscriptionController@list');
+Route::post('/formation/inscription', 'InscriptionController@store')->name('addInscription');
 

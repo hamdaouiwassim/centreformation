@@ -56,9 +56,11 @@ class FormationController extends Controller
         $formation->date_debut = $request->date_debut;
         $formation->date_fin = $request->date_fin;
         $formation->duree = $request->duree;
+        $formation->prix = $request->prix;
+        $formation->type = $request->type;
         $formation->save();
 
-        return redirect('/formations');
+        return redirect('/admin/formations');
     }
 
     /**
@@ -67,9 +69,12 @@ class FormationController extends Controller
      * @param  \App\Formation  $formation
      * @return \Illuminate\Http\Response
      */
-    public function show(Formation $formation)
+    public function show( $idformation)
     {
         //
+        $formation = Formation::find($idformation);
+        return view('user.formations.show')->with('formation', $formation);
+
     }
 
     /**
@@ -115,9 +120,10 @@ class FormationController extends Controller
                 $formation->date_debut = $request->date_debut;
                 $formation->date_fin = $request->date_fin;
                 $formation->duree = $request->duree;
+                $formation->prix = $request->prix;
                 $formation->update();
         
-                return redirect('/formations');
+                return redirect('/admin/formations');
     }
 
     /**
@@ -131,5 +137,11 @@ class FormationController extends Controller
         //
         Formation::find($idformation)->delete() ;
         return redirect()->back();
+    }
+
+    public function list(){
+        $formations = Formation::all();
+        return view('user.formations.index')->with('formations',$formations);
+
     }
 }

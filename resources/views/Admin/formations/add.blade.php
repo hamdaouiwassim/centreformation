@@ -241,18 +241,18 @@
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Gestion</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/actualites"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/actualites"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
                                     class="hide-menu">Actualites
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/formations"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/formations"
                                 aria-expanded="false"><i class="icon-layers"></i><span
                                     class="hide-menu selected">Formations</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/inscriptions"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/inscriptions"
                                 aria-expanded="false"><i class="icon-basket"></i><span
                                     class="hide-menu">Inscriptions</span></a></li>
-                        <li class="sidebar-item "> <a class="sidebar-link sidebar-link active" href="/evenements"
+                        <li class="sidebar-item "> <a class="sidebar-link sidebar-link active" href="/admin/evenements"
                                         aria-expanded="false"><i class="icon-calender"></i><span
                                             class="hide-menu">Evenements</span></a></li>
 
@@ -321,7 +321,7 @@
                                 </div>
                                 <hr />
                                 <div class="table-responsive">
-                                   <form action="/formation/store" method="post" enctype="multipart/form-data">
+                                   <form action="{{ route('addFormation') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                    
                                             <div class="form-group">
@@ -349,6 +349,19 @@
                                             <div class="form-group">
                                                 <label for="">date de fin </label>
                                                 <input type="date" name="date_fin"  class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Type de formation </label>
+                                                <select name="type" id="" class="form-control">
+                                                    <option value=""></option>
+                                                    <option value="Presensuelle">Presensuelle</option>
+                                                    <option value="A distance">A distance</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Prix  </label>
+                                                <input type="number" step="0.1" name="prix"  class="form-control">
                                             </div>
 
 

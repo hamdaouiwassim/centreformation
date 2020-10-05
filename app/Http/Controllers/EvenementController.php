@@ -58,7 +58,7 @@ class EvenementController extends Controller
          
        
           $evenement->save();
-          return redirect('/evenements');
+          return redirect('/admin/evenements');
     }
 
     /**
@@ -114,7 +114,7 @@ class EvenementController extends Controller
        
      
         $evenement->update();
-        return redirect('/evenements');
+        return redirect('/admin/evenements');
     }
 
     /**

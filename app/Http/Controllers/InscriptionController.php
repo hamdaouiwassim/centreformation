@@ -36,6 +36,15 @@ class InscriptionController extends Controller
     public function store(Request $request)
     {
         //
+        $inscription = new Inscription();
+        $inscription->fullname = $request->fullname  ;
+        $inscription->email = $request->email ;
+        $inscription->formation = $request->idformation ;
+        $inscription->telephone = $request->telephone ;
+
+        $inscription->save();
+        return redirect('/formation/'.$request->idformation);
+
     }
 
     /**

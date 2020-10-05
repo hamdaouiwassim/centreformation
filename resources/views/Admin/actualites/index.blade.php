@@ -241,18 +241,18 @@
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Gestion</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="/actualites"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/admin/actualites"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
                                     class="hide-menu">Actualites
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/formations"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/formations"
                                 aria-expanded="false"><i class="icon-layers"></i><span
                                     class="hide-menu">Formations</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/inscriptions"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/inscriptions"
                                 aria-expanded="false"><i class="icon-basket"></i><span
                                     class="hide-menu">Inscriptions</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/evenements"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/evenements"
                                         aria-expanded="false"><i class="icon-calender"></i><span
                                             class="hide-menu">Evenements</span></a></li>
 
@@ -318,7 +318,7 @@
                                 <div class="d-flex align-items-center mb-4">
                                     <h4 class="card-title">Actualites</h4>
                                     <div class="ml-auto">
-                                        <a href="/actualite/add" class="btn btn-primary">Ajouter</a>
+                                        <a href="{{ route('createActualite') }}" class="btn btn-primary">Ajouter</a>
                                     </div>
                                 </div>
                                 <hr />
@@ -348,8 +348,8 @@
                                                     {{ $ac->created_at }}
                                                 </td>
                                                 <td class="border-top-0 px-2 py-4">
-                                                        <a href="/actualite/edit/{{ $ac->id }}" class="btn btn-success">Modifier</a>
-                                                        <a onclick="return confirm('Voulez-vous vraiment supprimer cette actualite ?')" href="/actualite/delete/{{ $ac->id }}" class="btn btn-danger">Supprimer</a>
+                                                        <a href="{{ route('editActualite', [ 'id' => $ac->id ])}}" class="btn btn-success">Modifier</a>
+                                                        <a onclick="return confirm('Voulez-vous vraiment supprimer cette actualite ?')" href="{{ route('deleteActualite', [ 'id' => $ac->id ]) }}" class="btn btn-danger">Supprimer</a>
                                                 </td>
                                             
                                                 

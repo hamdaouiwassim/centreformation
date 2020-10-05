@@ -21,6 +21,9 @@ class CreateFormationsTable extends Migration
             $table->integer("duree");
             $table->date("date_debut");
             $table->date("date_fin");
+            $table->float("prix");
+            $table->string("type");
+            $table->string("etat");
             $table->timestamps();
         });
     }
