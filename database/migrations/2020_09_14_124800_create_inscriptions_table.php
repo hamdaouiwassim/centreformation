@@ -19,6 +19,7 @@ class CreateInscriptionsTable extends Migration
             $table->string('email');
             $table->string('telephone');
             $table->integer('formation');
+            $table->string('etat')->default('EN COURS');
             $table->timestamps();
         });
     }

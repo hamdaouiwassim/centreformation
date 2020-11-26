@@ -91,4 +91,24 @@ class InscriptionController extends Controller
     {
         //
     }
+    public function list(){
+        $inscriptions = Inscription::where('etat','EN COURS')->get();
+        return view('admin.inscriptions.index')->with('inscriptions',$inscriptions);
+    }
+
+    public function valider($idinscription){
+        $inscription = Inscription::find($idinscription);
+        $inscription->etat = "VALIDER";
+        $inscription->update();
+        return redirect()->back();
+        
+    }
+
+    public function supprimer($idinscription){
+        $inscription = Inscription::find($idinscription);
+        $inscription->etat = "REJETER";
+        $inscription->update();
+        return redirect()->back();
+        
+    }
 }

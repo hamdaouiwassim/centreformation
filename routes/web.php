@@ -37,7 +37,9 @@ Route::post('/admin/evenement/update', 'EvenementController@update')->name('upda
 Route::post('/admin/evenement/store', 'EvenementController@store')->name('addEvent');
 Route::get('/admin/evenement/add', 'EvenementController@create')->name('createEvent');
 
-
+Route::get('/admin/inscriptions', 'InscriptionController@list');
+Route::get('/admin/validate/inscription/{id}', 'InscriptionController@valider')->name('validateInscription');
+Route::get('/admin/delete/inscription/{id}', 'InscriptionController@supprimer')->name('deleteInscription');
 
 Route::get('/admin/formations', 'FormationController@index')->name('formations');
 Route::get('/admin/formation/delete/{id}', 'FormationController@destroy')->name('deleteFormation');
@@ -52,6 +54,6 @@ Route::get('/formations', 'FormationController@list');
 Route::get('/formation/{id}', 'FormationController@show');
 
 
-//Route::get('/formations', 'InscriptionController@list');
+
 Route::post('/formation/inscription', 'InscriptionController@store')->name('addInscription');
 
