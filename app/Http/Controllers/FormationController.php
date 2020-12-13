@@ -73,7 +73,7 @@ class FormationController extends Controller
     {
         //
         $formation = Formation::find($idformation);
-        return view('user.formations.show')->with('formation', $formation);
+        return view('formations.show')->with('formation', $formation);
 
     }
 
@@ -141,7 +141,11 @@ class FormationController extends Controller
 
     public function list(){
         $formations = Formation::all();
-        return view('user.formations.index')->with('formations',$formations);
+        return view('formations.index')->with('formations',$formations);
 
+    }
+    public function userLoggedList(){
+        $formations = Formation::all();
+        return view('user.formations.index')->with('formations',$formations);
     }
 }

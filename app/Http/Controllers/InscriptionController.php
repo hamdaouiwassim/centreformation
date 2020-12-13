@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Inscription;
 use Illuminate\Http\Request;
 
@@ -110,5 +110,9 @@ class InscriptionController extends Controller
         $inscription->update();
         return redirect()->back();
         
+    }
+    public function me(){
+        $inscriptions = Inscription::where('email',Auth::user()->email)->get();
+        return view('user.inscriptions.index')->with('inscriptions',$inscriptions);
     }
 }

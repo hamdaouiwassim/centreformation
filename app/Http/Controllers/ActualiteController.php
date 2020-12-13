@@ -126,4 +126,14 @@ class ActualiteController extends Controller
         Actualite::find($idactualite)->delete() ;
          return redirect()->back();
     }
+
+    public function list(){
+        $actualites = Actualite::all();
+        return view('actualites.index')->with('actualites',$actualites);
+
+    }
+    public function userLoggedListActualite(){
+        $actualites = Actualite::all();
+        return view('user.actualites.index')->with('actualites',$actualites);
+    }
 }

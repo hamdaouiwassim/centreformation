@@ -51,7 +51,19 @@ Route::get('/admin/formation/add', 'FormationController@create')->name('createFo
 // User Routes
 
 Route::get('/formations', 'FormationController@list');
+
+Route::get('/actualites', 'ActualiteController@list');
+
+Route::get('/evenements', 'EvenementController@list');
+
+Route::get('user/formations', 'FormationController@userLoggedList');
+Route::get('user/evenements', 'EvenementController@userLoggedListEvents');
+Route::get('user/actualites', 'ActualiteController@userLoggedListActualite');
 Route::get('/formation/{id}', 'FormationController@show');
+Route::get('/evenement/{id}', 'EvenementController@show');
+
+
+Route::get('user/inscriptions', 'InscriptionController@me');
 
 
 

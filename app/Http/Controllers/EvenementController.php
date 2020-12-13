@@ -67,9 +67,12 @@ class EvenementController extends Controller
      * @param  \App\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function show(Evenement $evenement)
+    public function show($idevenement)
     {
-        //
+         //
+         $evenement = Evenement::find($idevenement);
+         return view('evenements.show')->with('evenement', $evenement);
+
     }
 
     /**
@@ -128,5 +131,17 @@ class EvenementController extends Controller
         //
         Evenement::find($idevenement)->delete() ;
          return redirect()->back();
+    }
+
+    public function list(){
+        $evenements = Evenement::all();
+        return view('evenements.index')->with('evenements',$evenements);
+
+    }
+
+    
+    public function userLoggedListEvents(){
+        $evenements = Evenement::all();
+        return view('user.evenements.index')->with('evenements',$evenements);
     }
 }

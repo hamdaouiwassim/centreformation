@@ -343,7 +343,9 @@
                                                 <td class="border-top-0 px-2 py-4">
                                                    {{ Str::limit($ac->titre,15,' ...') }}
                                                 </td>
-                                                <td class="border-top-0 text-muted px-2 py-4 font-14">{{ Str::limit($ac->description,50,' ...') }}</td>
+                                                <td class="border-top-0 text-muted px-2 py-4 font-14">
+                                                    {{ Str::limit($ac->description,50,' ...') }}
+                                                </td>
                                                 <td class="border-top-0 px-2 py-4">
                                                     {{ $ac->created_at }}
                                                 </td>
