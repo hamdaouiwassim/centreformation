@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ruspina APP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h4 style="margin-left:15px"><ion-icon  name="grid-outline"></ion-icon> Liste des formations </h4>
+  <hr />
+  <ion-card *ngFor="let item of (results | async)" [routerLink]="['/', 'formations', item.id]">
+    <ion-card-header>
+      <img src="http://127.0.0.1:8000/uploads/formations/{{item.affiche}}" >
+      <ion-card-subtitle>{{ item.titre }}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-button color="success" [routerLink]="['/', 'formations', item.id]"> Detaille  <ion-icon  name="eye"></ion-icon></ion-button>
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>

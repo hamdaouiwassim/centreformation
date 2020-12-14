@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      
+      <ion-icon  name="home" [routerLink]="['/', 'formations']" ></ion-icon>
+      Ruspina APP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="formation">
+  <div style="display: flex;">
+    <ion-icon name="information-circle" size="large" style="padding: 10px;" ></ion-icon>
+  <h4 > {{ formation.titre }} </h4>
+  </div>
+  
+  <hr />
+  <ion-card  >
+    <ion-card-header>
+      <img src="http://127.0.0.1:8000/uploads/formations/{{formation.affiche}}" >
+      
+    </ion-card-header>
+  
+    <ion-card-content>
+      
+      <h4><ion-icon name="cash"></ion-icon> Prix :  <span color="success"> {{ formation.prix }} </span> </h4>
+      <hr />
+      <h4><ion-icon name="hourglass"></ion-icon> Dure de la formation  : {{ formation.duree }}  H </h4>
+      <hr />
+      <h4><ion-icon name="time"></ion-icon> Date de debut  : {{ formation.date_debut }}  </h4>
+      <hr />
+      <p><ion-icon name="newspaper"></ion-icon> Description : {{ formation.description }} </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
